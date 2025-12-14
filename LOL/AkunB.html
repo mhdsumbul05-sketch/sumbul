@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Endeavour Shop</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
+      :root {
+        --color-bg: #ffffff;
+        --color-text-primary: #111827;
+        --color-text-secondary: #6b7280;
+        --color-primary: #111827;
+        --color-primary-hover: #374151;
+        --color-accent: #0bb359;
+        --border-radius: 0.75rem;
+        --shadow-light: rgba(0, 0, 0, 0.05);
+        --transition-speed: 0.3s;
+        --container-max-width: 1200px;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background-color: var(--color-bg);
+        color: var(--color-text-primary);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        background: var(--color-bg);
+        border-bottom: 1px solid #104fce;
+        z-index: 10;
+        box-shadow: 0 2px 4px var(--shadow-light);
+      }
+
+      .nav-container {
+        max-width: var(--container-max-width);
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 1.5rem;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: var(--color-primary);
+        user-select: none;
+      }
+
+      .logo svg {
+        width: 32px;
+        height: 32px;
+        fill: var(--color-primary);
+        flex-shrink: 0;
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 2rem;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav ul li a {
+        font-weight: 600;
+        font-size: 1rem;
+        color: var(--color-text-secondary);
+        transition: color var(--transition-speed);
+      }
+
+      nav ul li a:hover,
+      nav ul li a:focus {
+        color: var(--color-primary);
+        outline: none;
+      }
+
+      main {
+        max-width: var(--container-max-width);
+        margin: 3rem auto 4rem;
+        padding: 0 1.5rem;
+      }
+
+      .hero {
+        text-align: center;
+        padding-bottom: 3rem;
+      }
+
+      .hero-logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+        user-select: none;
+      }
+
+      .hero-logo svg {
+        width: 48px;
+        height: 48px;
+        stroke: var(--color-primary);
+        fill: none;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .hero-logo span {
+        font-weight: 700;
+        font-size: 1.75rem;
+        color: var(--color-primary);
+        letter-spacing: -0.03em;
+        user-select: none;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+        letter-spacing: -0.03em;
+        color: var(--color-primary);
+      }
+
+      .hero p {
+        font-size: 1.25rem;
+        color: var(--color-text-secondary);
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 2rem;
+      }
+
+      .btn-primary {
+        background-color: var(--color-primary);
+        color: white;
+        font-weight: 700;
+        padding: 0.75rem 1.75rem;
+        border-radius: var(--border-radius);
+        font-size: 1.1rem;
+        cursor: pointer;
+        border: none;
+        transition: background-color var(--transition-speed),
+          transform var(--transition-speed);
+        user-select: none;
+      }
+
+      .btn-primary:hover,
+      .btn-primary:focus {
+        background-color: var(--color-primary-hover);
+        transform: scale(1.05);
+        outline: none;
+      }
+
+      .promo-banner {
+        background: linear-gradient(90deg, #fbbf24 0%, #f59e0b 100%);
+        color: #1f2937;
+        text-align: center;
+        border-radius: var(--border-radius);
+        padding: 1.25rem 1rem;
+        font-weight: 700;
+        font-size: 1.25rem;
+        margin-bottom: 3rem;
+        box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);
+        user-select: none;
+      }
+
+      section.products {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+      }
+
+      .product-card {
+        background-color: var(--color-bg);
+        border-radius: var(--border-radius);
+        box-shadow: 0 6px 15px var(--shadow-light);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: box-shadow var(--transition-speed),
+          transform var(--transition-speed);
+      }
+
+      .product-card:hover,
+      .product-card:focus-within {
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+        transform: translateY(-6px);
+        outline: none;
+      }
+
+      .product-image {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+      }
+
+      .product-info {
+        padding: 1rem 1.25rem 1.5rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .product-title {
+        font-weight: 700;
+        font-size: 1.25rem;
+        margin: 0 0 0.5rem 0;
+        color: var(--color-primary);
+      }
+
+      .product-description {
+        color: var(--color-text-secondary);
+        font-size: 0.95rem;
+        flex-grow: 1;
+        margin-bottom: 1rem;
+      }
+
+      .product-price-buy {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .product-price {
+        font-weight: 700;
+        font-size: 1.15rem;
+        color: var(--color-primary);
+      }
+
+      .btn-buy {
+        background-color: var(--color-accent);
+        color: #1f2937;
+        font-weight: 700;
+        border: none;
+        border-radius: var(--border-radius);
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background-color var(--transition-speed),
+          transform var(--transition-speed);
+        user-select: none;
+      }
+
+      .btn-buy:hover,
+      .btn-buy:focus {
+        background-color: #be8f59;
+        transform: scale(1.05);
+        outline: none;
+      }
+
+      footer {
+        text-align: center;
+        padding: 2rem 1.5rem;
+        color: var(--color-text-secondary);
+        font-size: 0.9rem;
+        border-top: 1px solid #e5e7eb;
+        user-select: none;
+      }
+
+      @media (max-width: 600px) {
+        .hero-logo span {
+          font-size: 1.5rem;
+        }
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+        main {
+          margin: 2rem auto 3rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div
+        class="nav-container"
+        role="navigation"
+        aria-label="Primary navigation"
+      >
+        <a href="#" class="logo" tabindex="0" aria-label="Brand Home">
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <line x1="12" y1="6" x2="12" y2="12" />
+            <line x1="12" y1="12" x2="16" y2="14" />
+          </svg>
+          Endeavour Entertaiment
+        </a>
+        <nav>
+          <ul>
+            <li><a href="#" tabindex="0">Home</a></li>
+            <li><a href="alwiaipassa.blogspot.com" tabindex="0">Products</a></li>
+            <li><a href="#" tabindex="0">Promotions</a></li>
+            <li>
+              <a href="tmpi.html" tabindex="0">Contact</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-logo" aria-label="Brand logo">
+          <svg
+            viewBox="0 0 64 64"
+            xmlns="http://www.w3.orgs/2000/svg"
+            aria-hidden="true"
+            role="img"
+          >
+          </svg>
+          <span></span>
+        </div>
+        <h1 id="hero-title">Welcome Endeavour Entertaiment</h1>
+        <p>
+          Endeavour Entertainment berkomitmen untuk selalu mendengarkan pendapat anda sehingga kita dapat membuat seni yang anda inginkan.
+        </p>
+        <a href="html.html"
+        class="btn-primary">Browse Products </a>
+        
+        </a> 
+      </section>
+
+      <section
+        class="promo-banner"
+        role="region"
+        aria-label="Exclusive Promotion Announcement"
+      >
+        Layanan cepat dan profesional <strong>Rapih</strong>.&Elegan
+      </section>
+
+      <section class="products" aria-label="Featured Products">
+        <article class="product-card" tabindex="0">
+          <img
+            src="Desain.jpeg"
+            alt="Wireless Headphones"
+            class="product-image"
+          />
+          <div class="product-info">
+            <h2 class="product-title">Desain</h2>
+            <p class="product-description">
+              Menerima desain dalam bentuk format Vektor dan pixel, kualitas
+              terjamin, sesuai selera customer bisa konsultasi langsung
+            </p>
+            <div class="product-price-buy">
+              <span class="product-price">Rp.50.000 - 3.500.000</span>
+              <button class="btn-buy" aria-label="Buy Wireless Headphones">
+                Buy Now
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" tabindex="0">
+          <img src="Potograpy.jpeg" alt="Smartwatch" class="product-image" />
+          <div class="product-info">
+            <h2 class="product-title">Fotograpy</h2>
+            <p class="product-description">
+              Tangkap moment mu bersama Endeavour Entertaiment, karena setiap
+              moment hidup mu layak di abadikan. Bersama keluarga, sahabat,
+              teman maupun kekasih tercinta.
+            </p>
+            <div class="product-price-buy">
+              <span class="product-price">Rp.150.000 - 1.200.000</span>
+              <button class="btn-buy" aria-label="Buy Smartwatch">
+                Buy Now
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" tabindex="0">
+          <img
+            src="videograpy.jpeg"
+            alt="Bluetooth Speaker"
+            class="product-image"
+          />
+          <div class="product-info">
+            <h2 class="product-title">Videograpy</h2>
+            <p class="product-description">
+              Kami tidak bisa membuatnya sendiri, ayo tuangkan ide & ceritamu
+              disini!!
+            </p>
+            <div class="product-price-buy">
+              <span class="product-price">Rp.390.000 - 10.000.000</span>
+              <button class="btn-buy" aria-label="Buy Bluetooth Speaker">
+                Buy Now
+              </button>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer>&copy; 2025 Endeavour. All rights reserved.</footer>
+  </body>
+</html>

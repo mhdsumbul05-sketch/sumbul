@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pembayaran QRIS - Admin</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <!-- Untuk ikon -->
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        color: #333;
+      }
+      .container {
+        background-color: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        padding: 30px;
+        max-width: 450px;
+        width: 100%;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: linear-gradient(90deg, #000000, #000000);
+      }
+      h1 {
+        color: #000000;
+        margin-bottom: 10px;
+        font-size: 24px;
+      }
+      .logo-qris {
+        margin-bottom: 20px;
+      }
+      .logo-qris img {
+        width: 80px;
+        height: auto;
+      }
+      .nama-tujuan {
+        font-size: 20px;
+        font-weight: bold;
+        color: #000000;
+        margin-bottom: 20px;
+        background-color: #f8f9fa;
+        padding: 10px;
+        border-radius: 8px;
+      }
+      .qr-section {
+        margin: 20px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .qr-code img {
+        width: 220px;
+        height: 220px;
+        border: 3px solid #000000;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+      .timer {
+        margin-top: 10px;
+        font-size: 16px;
+        color: #dc3545;
+        font-weight: bold;
+      }
+      .detail {
+        margin: 20px 0;
+        text-align: left;
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 8px;
+        border-left: 4px solid #000000;
+      }
+      .detail p {
+        margin: 8px 0;
+        display: flex;
+        justify-content: space-between;
+      }
+      .detail strong {
+        color: #000000;
+      }
+      .instruksi {
+        font-size: 14px;
+        color: #666;
+        margin-top: 20px;
+        line-height: 1.5;
+      }
+      .apps {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin: 20px 0;
+      }
+      .apps i {
+        font-size: 30px;
+        color: #000000;
+        transition: transform 0.3s;
+      }
+      .apps i:hover {
+        transform: scale(1.2);
+      }
+      .tombol {
+        background: linear-gradient(90deg, #28a745, #20c997);
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        margin-top: 20px;
+        transition: background 0.3s, transform 0.2s;
+      }
+      .tombol:hover {
+        background: linear-gradient(90deg, #218838, #17a2b8);
+        transform: translateY(-2px);
+      }
+      .footer {
+        margin-top: 20px;
+        font-size: 12px;
+        color: #000000;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1><i class="fas fa-qrcode"></i> Pembayaran QRIS</h1>
+      <div class="logo-qris">
+        <!-- Placeholder logo QRIS; ganti dengan logo resmi -->
+        <img src="logo endeavour.png" alt="Logo QRIS" />
+      </div>
+      <div class="nama-tujuan">
+        Tujuan: MUHAMMAD AMMIRUL ALWI AIPASSA, ELEKTRONIK
+      </div>
+      <div class="qr-section">
+        <div class="qr-code">
+          <!-- Ganti src dengan URL gambar QR code QRIS yang sebenarnya -->
+          <img src="qris11.jpeg" alt="QR Code QRIS" />
+        </div>
+        <div class="timer" id="timer">Waktu Tersisa: 10:00</div>
+      </div>
+      <div class="detail">
+        <p><strong>Jumlah Pembayaran:</strong> Rp -</p>
+        <p><strong>Nomor Referensi:</strong> ID1025461458719</p>
+        <p><strong>Nomor resi:</strong> A01</p>
+        <p><strong>Status:</strong> Menunggu Pembayaran</p>
+      </div>
+      <div class="instruksi">
+        <p>
+          Scan QR code di atas menggunakan aplikasi pembayaran berikut untuk
+          menyelesaikan transaksi:
+        </p>
+      </div>
+      <div class="apps">
+        <i class="fab fa-google-pay" title="Google Pay"></i>
+        <i class="fab fa-apple-pay" title="Apple Pay"></i>
+        <i class="fas fa-mobile-alt" title="OVO/Dana"></i>
+        <i class="fas fa-credit-card" title="GoPay/ShopeePay"></i>
+      </div>
+      <button
+        class="tombol"
+        onclick="alert('Pembayaran berhasil! Terima kasih.')"
+      >
+        <i class="fas fa-check"></i> Konfirmasi Pembayaran
+      </button>
+      <div class="footer">
+        Pastikan koneksi internet stabil. Pembayaran akan diproses otomatis.
+      </div>
+    </div>
+
+    <script>
+      // Timer sederhana untuk simulasi waktu pembayaran (10 menit)
+      let timeLeft = 600; // 10 menit dalam detik
+      const timerElement = document.getElementById("timer");
+
+      const countdown = setInterval(() => {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        timerElement.textContent = `Waktu Tersisa: ${minutes}:${
+          seconds < 10 ? "0" : ""
+        }${seconds}`;
+        timeLeft--;
+        if (timeLeft < 0) {
+          clearInterval(countdown);
+          timerElement.textContent = "Waktu Habis!";
+          timerElement.style.color = "#dc3545";
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>
